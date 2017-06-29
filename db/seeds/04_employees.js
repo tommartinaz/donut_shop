@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
         {first_name: 'Vinni', last_name: 'O', fav_donut: 5, shop_id: 1},
         {first_name: 'Shu Sia', last_name: 'Lukito', fav_donut: 2, shop_id: 2},
         {first_name: 'Emit', last_name: 'Dutcher', fav_donut: 1, shop_id: 4},
-        {first_name: 'David', last_name: 'Kruse', fav_donut: 3, shop_id: 5},
+        {first_name: 'David', last_name: 'Kruse', fav_donut: 3, shop_id: 1},
       ]);
     });
 };

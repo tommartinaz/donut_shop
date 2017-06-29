@@ -11,6 +11,7 @@ router.get('/', function (req, res, next) {
         });
 });
 
+
 router.get('/:shop_id/edit', (req, res) => {
     knex.raw(`select * from shops where id = ${req.params.shop_id}`)
     .then((shops) => {
@@ -21,8 +22,7 @@ router.get('/:shop_id/edit', (req, res) => {
 });
 
 router.post('/:shop_id', (req,res) => {
-    console.log('shop id', req.params.shop_id);
-    console.log(req.body);
+    //console.log(req.body);
     
     knex.raw(`update shops set (name, city) = ('${req.body.name}', '${req.body.city}') where id = ${req.params.shop_id}`)
     .then(knex.raw('select * from shops')
@@ -46,7 +46,7 @@ router.post('/', (req,res) => {
 });
 
 router.get('/delete/:id', (req,res) => {
-    console.log(req.body, req.params);
+    //console.log(req.body, req.params);
     knex.raw(`delete from shops where id = (${req.params.id})`)
         .then(knex.raw('select * from shops')
         .then((shops) => {
@@ -56,12 +56,15 @@ router.get('/delete/:id', (req,res) => {
 })
 
 router.get('/:shop_id', (req, res) => {
-    knex.raw(`select * from shops where id = ${req.params.shop_id}`)
+    Promise.all([knex.raw(`select s.name as name, s.city, d.name as donut from shops s join shop_donut_m2m sd on s.id=sd.shop_id join donuts d on sd.donut_id = d.id where s.id = ${req.params.shop_id}`),
+    knex.raw(`select e.first_name, e.last_name, s.name from employees e join shops s on e.shop_id = s.id where s.id=${req.params.shop_id}`)])
         .then((shops) => {
-            res.send(shops.rows);
+            //console.log(shops[0].rows);
+            res.render('shopshow', {
+                shopDetails: shops[0].rows,
+                empDetails: shops[1].rows
+            });
         });
 });
-
-
 
 module.exports = router;

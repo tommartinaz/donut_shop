@@ -1,0 +1,15 @@
+  <html>
+   <head>
+       <link rel="stylesheet" href="style.css">
+   </head>
+   <table>
+       
+<h2>List of donuts</h2>
+<% for(var i = 0; i < donutList.length; i++) { %>
+    <tr><td><a href="/donuts/<%=donutList[i].id%>"><%= donutList[i].name %></a></td><td><%= donutList[i].topping %></td><td><a href="/donuts/<%=donutList[i].id%>/edit">Edit</a></td><td><a href="/donuts/delete/<%=donutList[i].id%>">Delete</a></td></tr>
+  <% } %>
+</table>
+<br>
+<br>
+<a href="/donuts/new"><input type="button" class="button" name="adddonut" value="Add a donut"></a>
+</html>
