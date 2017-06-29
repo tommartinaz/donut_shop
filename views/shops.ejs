@@ -1,0 +1,13 @@
+   <html>
+   <head>
+       <link rel="stylesheet" href="style.css">
+   </head>
+   <table>
+       
+<h2>List of donut shops</h2>
+<% for(var i = 0; i < shopList.length; i++) { %>
+    <tr><td><%= shopList[i].name %></td><td><%= shopList[i].city %></td><td><a href="/shops/<%=shopList[i].id%>/edit">Edit</a></td><td><a href="/shops/delete/<%=shopList[i].id%>">Delete</a></td></tr>
+  <% } %>
+</table>
+
+</html>

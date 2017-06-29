@@ -21,6 +21,7 @@ exports.up = function(knex, Promise) {
         data.string('first_name').notNullable;
         data.string('last_name').notNullable;
         data.integer('fav_donut').references('id').inTable('donuts');
+        data.integer('shop_id').references('id').inTable('shops');
     })
   
 };

@@ -1,0 +1,15 @@
+table, td {
+    border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+    width: 500px;
+}
+
+td {
+    wid
+}
+
+.button {
+    font-size: 20px;
+}
