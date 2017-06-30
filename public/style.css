@@ -1,4 +1,4 @@
-table, td {
+table, td, th, tr {
     border: 1px solid black;
 }
 table {
@@ -12,4 +12,7 @@ td {
 
 .button {
     font-size: 20px;
+}
+.price {
+    text-align: center;
 }
